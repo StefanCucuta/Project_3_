@@ -6,6 +6,22 @@ import re
 import random
 import time
 
+# Legend, Allows the game display to be updated with ease
+EMPTY = '─'
+
+# Coordinate doesn't hold ship/hasn't been guessed
+SHIP = '■'
+
+# Coordinate holds a ship
+HITSHIP = 'X'
+
+# Coordinate holds a ship that has been attacked
+GUESSED = 'O'
+
+# Used to separate the different phases of the game
+PHASE = '░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░'
+
+
 def run_game():
     
     print('WELCOME TO BATTLESHIPS!')
