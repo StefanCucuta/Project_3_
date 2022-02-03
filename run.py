@@ -128,6 +128,52 @@ class GameBoard:
                     else:
                         return True
         return False
+    
+    # Prints out which ship they are placing.
+
+    def ship_prompt(self, ship_length):
+        print('THE SAME POINT CANNOT BE USED TWICE!')
+        print('HORIZONTAL AND VERTICAL PLACEMENT ONLY.')
+        if ship_length == 6:
+            print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)\n')
+        elif ship_length == 4:
+            print('PLEASE PLACE THE BATTLECRUISER (1x4)\n')
+        elif ship_length == 3:
+            print('PLEASE PLACE THE SUBMARINE (1x3)\n')
+        elif ship_length == 2:
+            print('PLEASE PLACE THE FRIGATE (1x2)\n')
+
+    def ship_input(self):
+        while True:
+            try:
+                orientation = input('ENTER ORIENTATION (H OR V): \n').upper()
+                if orientation == 'H' or orientation == 'V':
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print('PLEASE ENTER A VALID ORIENTATION')
+        while True:
+            try:
+                column = input('ENTER DESIRED COLUMN (A-J): \n').upper()
+                if not re.match('^[A-J]*$', column):
+                    print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+                else:
+                    column = self.letters_to_numbers[column]
+                    break
+            except KeyError:
+                print('PLEASE ENTER A LETTER')
+        while True:
+            try:
+                row = input('ENTER DESIRED ROW (0-9): \n')
+                if row in self.row_input:
+                    row = int(row)
+                    break
+                else:
+                    raise ValueError
+            except ValueError:
+                print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
+        return orientation, column, row
 
 
 run_game()
