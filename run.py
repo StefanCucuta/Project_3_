@@ -225,5 +225,43 @@ class GameBoard:
                                 self.print_board()
                                 break
 
+    # Returns a random int between 1 and 2.
+
+    def random_attk_int(self):
+        attk_random = random.randint(1, 2)
+        return attk_random
+    
+    # Holds the logic for computers attack horisontaly and verticaly.
+
+    def comp_attack_column(self):
+        column_hit = self.column_arry[-1]
+        if column_hit == 10:
+            column = random.randint(0, 9)
+            return column
+        else:
+            attk_random = self.random_attk_int()
+            if attk_random == 1:
+                column = column_hit + 1
+                return column
+            elif attk_random == 2:
+                column = column_hit - 1
+                return column
+
+    def comp_attack_row(self):
+        row_hit = self.row_arry[-1]
+        if row_hit == 10:
+            row = random.randint(0, 9)
+            return row
+        else:
+            attk_random = self.random_attk_int()
+            if attk_random == 1:
+                row = row_hit + 1
+                return row
+            elif attk_random == 2:
+                row = row_hit - 1
+                return row
+    
+    
+
 
 run_game()
