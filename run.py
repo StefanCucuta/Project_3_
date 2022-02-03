@@ -24,7 +24,7 @@ PHASE = '░░░░░░░░░░░░░░░░░░░░░░░�
 # Welcome message used at the begaining
 
 def welcome_message():
-    
+
     print('WELCOME TO BATTLESHIPS GAME!')
     print('THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
@@ -302,8 +302,104 @@ class GameBoard:
                     row = random.randint(0, 9)
                     break
         return column, row
+
+    # Updates the lives of the respective player.
+
+    def lives_counter(self):
+        count = 15
+        for row in self.board:
+            for column in row:
+                if column == HITSHIP:
+                    count -= 1
+                    self.lives = count
+        return self.lives
     
+    def check_miss_count(self):
+        first = self.attk_arry[-1]
+        second = self.attk_arry[-2]
+        third = self.attk_arry[-3]
+        fourth = self.attk_arry[-4]
+        sum_of_attk = first + second + third + fourth
+        if sum_of_attk == 8:
+            self.column_arry.append(10)
+            self.row_arry.append(10)
+        else:
+            pass
+
+# Loops until a player is out of lives.
+
+def run_game(player_board, user_guess, computer_board, computer_guess):
     
+    player_turn = 0
+    computer_turn = 1
+    player_lives = 15
+    computer_lives = 15
+    while True:
+        if player_turn < computer_turn:
+            user_guess.print_board()
+            column, row = player_board.attack_input()
+            if user_guess.board[row][column] == GUESSED:
+                print('\nYOU HAVE ALREADY GUESSED THIS CO-ORDINATE\n')
+            elif user_guess.board[row][column] == HITSHIP:
+                print('\nYOU HAVE ALREADY HIT A SHIP IN THIS CO-ORDINATE\n')
+            elif computer_board.board[row][column] == SHIP:
+                print(' ')
+                print(PHASE)
+                print('\nCONGRATULATIONS, YOU HIT A SHIP!\n')
+                user_guess.board[row][column] = HITSHIP
+                player_turn += 1
+                user_guess.lives_counter()
+                user_guess.print_board()
+                computer_lives -= 1
+                print("COMPUTER'S TURN TO ATTACK!")
+                time.sleep(3)
+                if computer_lives == 0:
+                    print('\nTHE COMPUTER HAS NO LIVES LEFT!')
+                    print('YOU WIN!')
+                    print(' ')
+                    print(PHASE)
+                    break
+            else:
+                print(' ')
+                print(PHASE)
+                print('\nYOU MISSED!\n')
+                user_guess.board[row][column] = GUESSED
+                player_turn += 1
+                user_guess.print_board()
+                print("COMPUTER'S TURN TO ATTACK!")
+                time.sleep(3)
+        if computer_turn == player_turn:
+            row, column = computer_guess.attack_input()
+            if computer_guess.board[row][column] == GUESSED:
+                pass
+            elif computer_guess.board[row][column] == HITSHIP:
+                pass
+            elif player_board.board[row][column] == SHIP:
+                print('THE COMPUTER HIT YOUR SHIP!\n')
+                computer_turn += 1
+                player_lives -= 1
+                computer_guess.column_arry.append(column)
+                computer_guess.row_arry.append(row)
+                computer_guess.board[row][column] = HITSHIP
+                player_board.board[row][column] = HITSHIP
+                player_board.lives_counter()
+                player_board.print_board()
+                computer_guess.attk_arry.append(0)
+                time.sleep(3)
+                if player_lives == 0:
+                    print('\nYOU HAVE NO LIVES LEFT!')
+                    print('YOU LOSE!')
+                    print(' ')
+                    print(PHASE)
+                    break
+            else:
+                print('COMPUTER MISSED!\n')
+                computer_guess.board[row][column] = GUESSED
+                computer_turn += 1
+                player_board.print_board()
+                computer_guess.attk_arry.append(1)
+                computer_guess.check_miss_count()
+                time.sleep(3)
 
 
 run_game()
