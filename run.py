@@ -174,6 +174,56 @@ class GameBoard:
             except ValueError:
                 print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
         return orientation, column, row
+    
+    # Place ships randomly on the computer board
+
+    def place_ships(self):
+        length_of_ships = [6, 4, 3, 2]
+
+        for ship_length in length_of_ships:
+            while True:
+                if self.user == 'computer':
+                    orientation = random.choice(['H', 'V'])
+                    row = random.randint(0, 9)
+                    column = random.randint(0, 9)
+                    if self.check_ship_fits(
+                        ship_length, row, column, orientation
+                    ):
+                        if self.collision_check(
+                            self.board, row, column, orientation, ship_length
+                        ) is False:
+                            if orientation == 'H':
+                                for i in range(column, column + ship_length):
+                                    self.board[row][i] = SHIP
+                            else:
+                                for i in range(row, row + ship_length):
+                                    self.board[i][column] = SHIP
+                            break
+                else:
+                    if self.user == 'player':
+                        self.ship_prompt(ship_length)
+                        orientation, column, row = self.ship_input()
+                        if self.check_ship_fits(
+                            ship_length, row, column, orientation
+                        ):
+                            if self.collision_check(
+                                self.board,
+                                row,
+                                column,
+                                orientation,
+                                ship_length
+                                    ) is False:
+                                if orientation == 'H':
+                                    for i in range(
+                                        column, column + ship_length
+                                    ):
+                                        self.board[row][i] = SHIP
+                                else:
+                                    for i in range(row, row + ship_length):
+                                        self.board[i][column] = SHIP
+                                print(' ')
+                                self.print_board()
+                                break
 
 
 run_game()
