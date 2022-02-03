@@ -113,7 +113,7 @@ class GameBoard:
             for i in range(column, column + ship_length):
                 if board[row][i] == SHIP:
                     if self.user == 'player':
-                        print('\nA SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
+                        print('\n A SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
                         print('TRY AGAIN SIR!\n')
                         return True
                     else:
@@ -122,7 +122,7 @@ class GameBoard:
             for i in range(row, row + ship_length):
                 if board[i][column] == SHIP:
                     if self.user == 'player':
-                        print('\nA SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
+                        print('\n A SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
                         print('TRY AGAIN SIR!\n')
                         return True
                     else:
@@ -174,8 +174,8 @@ class GameBoard:
             except ValueError:
                 print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
         return orientation, column, row
-    
-    # Place ships randomly on the computer board
+        
+ # Place ships randomly on the computer board
 
     def place_ships(self):
         length_of_ships = [6, 4, 3, 2]
@@ -422,6 +422,36 @@ def play_again():
             print('PLEASE ENTER Y OR N')
             answer = input('ENTER Y OR N: \n').upper()
 
+# Start a new game.
+
+def new_game():
+
+    # Prints the welcome message to the terminal
+    welcome_message()
+    # Gets the players name
+    player_name = name_input()
+    # Creates the players game board
+    player_board = GameBoard(player_name, 'player')
+    # Creates the players guess board
+    user_guess = GameBoard('GUESS', 'user guess')
+    # Creates the computers board
+    computer_board = GameBoard("COMPUTER's", 'computer')
+    # Creates the computers guess board
+    computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
+    # Randomly places the computers ships on their board
+    computer_board.place_ships()
+    # Prints the players board to the terminal for reference
+    player_board.print_board()
+    # Allows the player to place their ships
+    player_board.place_ships()
+    time.sleep(2)
+    # Prints the players guess board to terminal for reference
+    print(PHASE)
+    print(' ')
+    # Takes turns attacking until winner
+    run_game(player_board, user_guess, computer_board, computer_guess)
+    # Asks the player if they want to play again or quit
+    play_again()
 
 
-run_game()
+new_game()
