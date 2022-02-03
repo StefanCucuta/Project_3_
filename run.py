@@ -261,7 +261,7 @@ class GameBoard:
                 row = row_hit - 1
                 return row
 
-    #  Allows the player to input their desired attack co-ordinates.
+    # Allows the player to input their desired attack co-ordinates.
 
     def attack_input(self):
         while True:
@@ -400,6 +400,28 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 computer_guess.attk_arry.append(1)
                 computer_guess.check_miss_count()
                 time.sleep(3)
+
+# Asks the player if they want to play again or quit
+
+def play_again():
+    print('\nWOULD YOU LIKE TO PLAY AGAIN?')
+    answer = input('ENTER Y OR N: \n').upper()
+    print(' ')
+    while True:
+        if answer == "Y":
+            print(PHASE)
+            new_game()
+        elif answer == "N":
+            print(' ')
+            print('GOODBYE!')
+            print(' ')
+            print(PHASE)
+            return False
+        else:
+            print(' ')
+            print('PLEASE ENTER Y OR N')
+            answer = input('ENTER Y OR N: \n').upper()
+
 
 
 run_game()
