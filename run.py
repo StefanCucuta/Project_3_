@@ -90,7 +90,7 @@ class GameBoard:
         if orientation == 'H':
             if column + ship_length > 10:
                 if self.user == 'player':
-                    print('SHIP DOES NOT FIT, TRY AGAIN!\n')
+                    print('SHIP DOES NOT FIT, TRY AGAIN SIR!\n')
                     return False
                 else:
                     return False
@@ -99,10 +99,35 @@ class GameBoard:
         else:
             if row + ship_length > 10:
                 if self.user == 'player':
-                    print('SHIP DOES NOT FIT, TRY AGAIN!\n')
+                    print('SHIP DOES NOT FIT, TRY AGAIN SIR!\n')
                     return False
                 else:
                     return False
             else:
                 return True
+
+    #  Check for ships collision after placement
+
+    def collision_check(self, board, row, column, orientation, ship_length):
+        if orientation == 'H':
+            for i in range(column, column + ship_length):
+                if board[row][i] == SHIP:
+                    if self.user == 'player':
+                        print('\nA SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
+                        print('TRY AGAIN SIR!\n')
+                        return True
+                    else:
+                        return True
+        else:
+            for i in range(row, row + ship_length):
+                if board[i][column] == SHIP:
+                    if self.user == 'player':
+                        print('\nA SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
+                        print('TRY AGAIN SIR!\n')
+                        return True
+                    else:
+                        return True
+        return False
+
+
 run_game()
