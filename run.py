@@ -260,6 +260,48 @@ class GameBoard:
             elif attk_random == 2:
                 row = row_hit - 1
                 return row
+
+    #  Allows the player to input their desired attack co-ordinates.
+
+    def attack_input(self):
+        while True:
+            if self.user == 'player':
+                print("ITS YOUR TURN TO ATTACK!\n")
+                try:
+                    column = input('ENTER DESIRED COLUMN (A-J): \n').upper()
+                    if not re.match('^[A-J]*$', column):
+                        print('PLEASE ENTER A VALID LETTER BETWEEN A-J')
+                    else:
+                        column = self.letters_to_numbers[column]
+                        break
+                except KeyError:
+                    print('PLEASE ENTER A LETTER')
+            elif self.user == 'computer guess':
+                column = self.comp_attack_column()
+                if column == range(0, 10):
+                    break
+                else:
+                    column = random.randint(0, 9)
+                    break
+        while True:
+            if self.user == 'player':
+                try:
+                    row = input('ENTER DESIRED ROW (0-9): \n')
+                    if row in self.row_input:
+                        row = int(row)
+                        break
+                    else:
+                        raise ValueError
+                except ValueError:
+                    print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
+            elif self.user == 'computer guess':
+                row = self.comp_attack_row()
+                if row == range(0, 10):
+                    break
+                else:
+                    row = random.randint(0, 9)
+                    break
+        return column, row
     
     
 
