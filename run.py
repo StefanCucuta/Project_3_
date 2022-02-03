@@ -12,10 +12,10 @@ EMPTY = '─'
 # Coordinate doesn't hold ship/hasn't been guessed
 SHIP = '■'
 
-# Coordinate holds a ship
+# Coordinate holds a ship that has been attacked
 HITSHIP = 'X'
 
-# Coordinate holds a ship that has been attacked
+# Coordinate that was guessed and resulted in miss
 GUESSED = 'O'
 
 # Used to separate the different phases of the game
@@ -24,12 +24,19 @@ PHASE = '░░░░░░░░░░░░░░░░░░░░░░░�
 
 def welcome_message():
     """ Welcome Message """
+    print('\n             WELCOME TO BATTLESHIPS GAME!')
 
-    print('WELCOME TO BATTLESHIPS GAME!')
+    print("""
+                           __/___            
+                     _____/______|           
+             _______/_____\_______\_____     
+             \                  < < <   |    
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~""")
 
-    print('THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
+    print('\n THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
+    print('  IT MAY TAKE SOME TIME SO MAKE YOURSELF COMFORTABLE')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
-    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 FOR EACH HIT\n')
+    print('  EACH PLAYER HAS 15 LIVES, THEY LOSE 1 FOR EACH HIT\n')
     print(f"{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASN'T BEEN GUESSED")
     print(f'{SHIP} REPRESENTS A SHIP')
     print(f'{HITSHIP} REPRESENTS A HIT OR SUNK SHIP')
@@ -37,8 +44,9 @@ def welcome_message():
 
 
 def validate_team_name(name):
-    """ Validate the name of the team"""
-
+    """
+    Validate the name of the team
+    """
     if not re.match('^[A-Za-z0-9_]*$', name):
         print('INVALID NAME. LETTERS, NUMBERS AND UNDERSCORES ONLY')
         return False
@@ -46,9 +54,9 @@ def validate_team_name(name):
         print('INVALID NAME. 10 CHARACTERS MAX')
         return False
     elif len(name) == 0:
-        print('INVALID NAME. NAME NOT LONG ENOUGH')
+        print('INVALID NAME. NOT LONG ENOUGH')
     else:
-        return
+        return True
 
 
 def name_input():
@@ -134,8 +142,7 @@ class GameBoard:
             for i in range(column, column + ship_length):
                 if board[row][i] == SHIP:
                     if self.user == 'player':
-                        print(
-                            '\nALREADY PLACED WITHIN THESE CO-ORDINATES.')
+                        print('\nALREADY PLACED WITHIN THESE CO-ORDINATES.')
                         print('TRY AGAIN SIR!\n')
                         return True
                     else:
