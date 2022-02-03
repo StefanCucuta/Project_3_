@@ -21,23 +21,24 @@ GUESSED = 'O'
 # Used to separate the different phases of the game
 PHASE = '░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░'
 
-# Welcome message used at the begaining
 
 def welcome_message():
+    """ Welcome Message """
 
     print('WELCOME TO BATTLESHIPS GAME!')
+
     print('THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
     print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
-    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 FOR EACH HIT FROM THE OPPONENT\n')
+    print('EACH PLAYER HAS 15 LIVES, THEY LOSE 1 FOR EACH HIT\n')
     print(f"{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASN'T BEEN GUESSED")
     print(f'{SHIP} REPRESENTS A SHIP')
     print(f'{HITSHIP} REPRESENTS A HIT OR SUNK SHIP')
     print(f'{GUESSED} IS FOR A CO-ORDINATE THAT HAS BEEN GUESSED\n')
 
-# Validate the name of the team
 
 def validate_team_name(name):
-    
+    """ Validate the name of the team"""
+
     if not re.match('^[A-Za-z0-9_]*$', name):
         print('INVALID NAME. LETTERS, NUMBERS AND UNDERSCORES ONLY')
         return False
@@ -47,17 +48,33 @@ def validate_team_name(name):
     elif len(name) == 0:
         print('INVALID NAME. NAME NOT LONG ENOUGH')
     else:
-        return True
+        return
+
+
+def name_input():
+    """Collects the user name input"""
+
+    print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
+    while True:
+        player_name = input('PLEASE ENTER A TEAM NAME:\n')
+        if validate_team_name(player_name):
+            break
+    print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
+    print(PHASE)
+    time.sleep(1)
+    print(' ')
+    return player_name
 
 # Game Board
 
-class GameBoard:
 
+class GameBoard:
+    """ Game Board """
     # Converts letters for display purposes to numbers for functionality
     letters_to_numbers = {
         'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E': 4,
         'F': 5, 'G': 6, 'H': 7, 'I': 8, 'J': 9
-        }
+    }
 
     # Valid row input
     row_input = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
@@ -74,7 +91,9 @@ class GameBoard:
     # Prints the game board
 
     def print_board(self):
-        
+        """
+         Prints the required board to the terminal.
+        """
         print(f'{self.name} BOARD:\n')
         print('  A B C D E F G H I J ')
         print('  -------------------')
@@ -87,6 +106,7 @@ class GameBoard:
     # Checks if the ships fits to the board
 
     def check_ship_fits(self, ship_length, row, column, orientation):
+        """Holds the logic to check if the placed ship fits."""
         if orientation == 'H':
             if column + ship_length > 10:
                 if self.user == 'player':
@@ -109,11 +129,13 @@ class GameBoard:
     #  Check for ships collision after placement
 
     def collision_check(self, board, row, column, orientation, ship_length):
+        """Holds the logic to check for ship collisions upon placement."""
         if orientation == 'H':
             for i in range(column, column + ship_length):
                 if board[row][i] == SHIP:
                     if self.user == 'player':
-                        print('\n A SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
+                        print(
+                            '\nALREADY PLACED WITHIN THESE CO-ORDINATES.')
                         print('TRY AGAIN SIR!\n')
                         return True
                     else:
@@ -122,16 +144,18 @@ class GameBoard:
             for i in range(row, row + ship_length):
                 if board[i][column] == SHIP:
                     if self.user == 'player':
-                        print('\n A SHIP IS ALREADY PLACED WITHIN THESE CO-ORDINATES.')
+                        print(
+                            '\nALREADY PLACED WITHIN THESE CO-ORDINATES.')
                         print('TRY AGAIN SIR!\n')
                         return True
                     else:
                         return True
         return False
-    
+
     # Prints out which ship they are placing.
 
     def ship_prompt(self, ship_length):
+        """Prints out to the user which ship they are placing."""
         print('THE SAME POINT CANNOT BE USED TWICE!')
         print('HORIZONTAL AND VERTICAL PLACEMENT ONLY.')
         if ship_length == 6:
@@ -144,6 +168,7 @@ class GameBoard:
             print('PLEASE PLACE THE FRIGATE (1x2)\n')
 
     def ship_input(self):
+        """Collects the users desired"""
         while True:
             try:
                 orientation = input('ENTER ORIENTATION (H OR V): \n').upper()
@@ -174,10 +199,11 @@ class GameBoard:
             except ValueError:
                 print('PLEASE ENTER A VALID NUMBER BETWEEN 0-9')
         return orientation, column, row
-        
- # Place ships randomly on the computer board
+
+    # Place ships randomly on the computer board
 
     def place_ships(self):
+        """Places the ships randomly on the computers board"""
         length_of_ships = [6, 4, 3, 2]
 
         for ship_length in length_of_ships:
@@ -212,7 +238,7 @@ class GameBoard:
                                 column,
                                 orientation,
                                 ship_length
-                                    ) is False:
+                            ) is False:
                                 if orientation == 'H':
                                     for i in range(
                                         column, column + ship_length
@@ -228,12 +254,14 @@ class GameBoard:
     # Returns a random int between 1 and 2.
 
     def random_attk_int(self):
+        """Returns a random int between 1 and 2"""
         attk_random = random.randint(1, 2)
         return attk_random
-    
+
     # Holds the logic for computers attack horisontaly and verticaly.
 
     def comp_attack_column(self):
+        """Holds the logic for computers attack"""
         column_hit = self.column_arry[-1]
         if column_hit == 10:
             column = random.randint(0, 9)
@@ -248,6 +276,7 @@ class GameBoard:
                 return column
 
     def comp_attack_row(self):
+        """Holds the logic for computers attack"""
         row_hit = self.row_arry[-1]
         if row_hit == 10:
             row = random.randint(0, 9)
@@ -264,6 +293,7 @@ class GameBoard:
     # Allows the player to input their desired attack co-ordinates.
 
     def attack_input(self):
+        """Allows the player to input their desired attack co-ordinates."""
         while True:
             if self.user == 'player':
                 print("ITS YOUR TURN TO ATTACK!\n")
@@ -306,6 +336,7 @@ class GameBoard:
     # Updates the lives of the respective player.
 
     def lives_counter(self):
+        """Updates the lives of the player, runs each time a ship is hit"""
         count = 15
         for row in self.board:
             for column in row:
@@ -313,8 +344,9 @@ class GameBoard:
                     count -= 1
                     self.lives = count
         return self.lives
-    
+
     def check_miss_count(self):
+        """Returns the last four values of attk_arry."""
         first = self.attk_arry[-1]
         second = self.attk_arry[-2]
         third = self.attk_arry[-3]
@@ -328,8 +360,9 @@ class GameBoard:
 
 # Loops until a player is out of lives.
 
+
 def run_game(player_board, user_guess, computer_board, computer_guess):
-    
+    """Loops until a player is out of lives."""
     player_turn = 0
     computer_turn = 1
     player_lives = 15
@@ -403,7 +436,9 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
 
 # Asks the player if they want to play again or quit
 
+
 def play_again():
+    """Asks the player if they want to play again or quit"""
     print('\nWOULD YOU LIKE TO PLAY AGAIN?')
     answer = input('ENTER Y OR N: \n').upper()
     print(' ')
@@ -424,33 +459,22 @@ def play_again():
 
 # Start a new game.
 
-def new_game():
 
-    # Prints the welcome message to the terminal
+def new_game():
+    """Starts a new game"""
     welcome_message()
-    # Gets the players name
     player_name = name_input()
-    # Creates the players game board
     player_board = GameBoard(player_name, 'player')
-    # Creates the players guess board
     user_guess = GameBoard('GUESS', 'user guess')
-    # Creates the computers board
     computer_board = GameBoard("COMPUTER's", 'computer')
-    # Creates the computers guess board
     computer_guess = GameBoard('COMPUTER GUESS', 'computer guess')
-    # Randomly places the computers ships on their board
     computer_board.place_ships()
-    # Prints the players board to the terminal for reference
     player_board.print_board()
-    # Allows the player to place their ships
     player_board.place_ships()
     time.sleep(2)
-    # Prints the players guess board to terminal for reference
     print(PHASE)
     print(' ')
-    # Takes turns attacking until winner
     run_game(player_board, user_guess, computer_board, computer_guess)
-    # Asks the player if they want to play again or quit
     play_again()
 
 
