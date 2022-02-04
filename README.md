@@ -69,7 +69,7 @@ Battleship is a strategy type guessing game for two players. It is played on rul
 
     *Special attention to the board display during game play was required to ensure for suitable contrast between the different markers. [The Ascii Code](https://theasciicode.com.ar/) website was used to explore my options regarding ASCII characters and boat image for the beagining of the game.*
 
-    ![legend image](/assets/images/Screenshot 2022-02-04 at 16.10.47.png) 
+    ![legend image](/assets/images/ASCII.png) 
 
 
 [Return to Table of Contents](#contents)
