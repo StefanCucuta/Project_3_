@@ -69,7 +69,7 @@ Battleship is a strategy type guessing game for two players. It is played on rul
 
     *Special attention to the board display during game play was required to ensure for suitable contrast between the different markers. [The Ascii Code](https://theasciicode.com.ar/) website was used to explore my options regarding ASCII characters and boat image for the beagining of the game.*
 
-    ![legend image](IMAGE WITH THE BOAT AT THE BEAGING OF THE GAME) 
+    ![legend image](IMAGE) 
 
 
 [Return to Table of Contents](#contents)
@@ -153,5 +153,57 @@ Battleship is a strategy type guessing game for two players. It is played on rul
     13: A message will appear informing you that the app was successfully deployed and a View button will bring you to the live site.
 
 The live link can be found here - [BATTLESHIPS]()
+
+[Return to Table of Contents](#contents)
+
+## Technologies Used <a name ='tech'></a>
+
+- **Languages Used**
+
+    * PYTHON
+    * MARKDOWN
+
+- **Frameworks, Libraries & Programs Used**
+    
+    * **[GitHub](https://github.com/).**
+        * GitHub is used to store the projects code after being pushed from Git.
+    
+    * **[Heroku](https://id.heroku.com/login).**
+        * Used to deploy my project.
+    
+    * **Balsamiq.** 
+        * Used to create the wire frames during the development process.
+    
+    * **[Lucidchart](https://lucid.co/).**
+        * Used to create flow-diagrams during development.
+
+    * **Git.**
+        * Git was used for version control by utilizing the GitPod terminal to commit to Git and Push to GitHub.
+    
+    * **Regular Expression Operations Library (re).**
+        * Used for: name, orientation and column input validation.
+    
+    * **Time Access and Conversions Library (time).**
+        * The sleep method from this library is used to aide display within the terminal.
+
+    * **Generate Pseudo-Random Numbers Library (random).**
+        * Used for ship placement and attack input on behalf of the computer.
+    
+    
+[Return to Table of Contents](#contents)
+
+## Credits <a name = 'credits'></a> 
+
+* Thanks to the Code Institute who helped me develop my understanding throughout this project.
+
+- **Content** 
+
+    * Various highlighted sections of my code are developed from this [YouTube Tutorial.] However, my project is object orientated, with several extra features, so in most instances the base code has been padded out or accepts different arguments.
+
+    * My use of the re library was based of this post on Stack Overflow.
+
+- **Media**
+
+    * None Required.
 
 [Return to Table of Contents](#contents)
