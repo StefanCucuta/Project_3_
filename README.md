@@ -89,7 +89,7 @@ Battleship is a strategy type guessing game for two players. It is played on rul
 
 ## Testing <a name ='testing'></a>  
 
--  Due to the nature of the project testing has been conducted throughout its entirety, mainly through the use of running the program in the terminal and ensuring i get the output intended. Evidence of this is clear within my commits, with various debugs recorded. 
+-  Due to the nature of the project testing has been conducted throughout its entirety, mainly through the use of running the program in the terminal and ensuring i get the output intended. Evidence of this is clear within my commits.
 
 -  Various sections of code where also developed in isolation and outputs checked before being inserted into the running order as the size of the project grew.  
 
