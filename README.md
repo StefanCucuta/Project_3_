@@ -4,9 +4,9 @@
 
 Battleship is a strategy type guessing game for two players. It is played on ruled grids (paper or board) on which each player's fleet of ships (including battleships) are marked. The locations of the fleets are concealed from the other player. Players alternate turns calling "shots" at the other player's ships, and the objective of the game is to destroy the opposing player's fleet.
 
-![](IMAGE OF THE GAME )
+![](/assets/images/Game.png)
 
-**[Live DEMO]( )**
+**[Live DEMO](https://battleships-project3.herokuapp.com/)**
 
 
 # Table of Contents <a name='contents'></a>
@@ -69,7 +69,7 @@ Battleship is a strategy type guessing game for two players. It is played on rul
 
     *Special attention to the board display during game play was required to ensure for suitable contrast between the different markers. [The Ascii Code](https://theasciicode.com.ar/) website was used to explore my options regarding ASCII characters and boat image for the beagining of the game.*
 
-    ![legend image](IMAGE) 
+    ![legend image](/assets/images/Screenshot 2022-02-04 at 16.10.47.png) 
 
 
 [Return to Table of Contents](#contents)
