@@ -113,3 +113,45 @@ Battleship is a strategy type guessing game for two players. It is played on rul
     - Not within project scope.
 
 [Return to Table of Contents](#contents)
+
+## Deployment <a name ='deployment'></a>
+
+- The site is deployed via Heroku. The steps to deploy are as follows:
+
+    *Ensure the requirements for the project are added to the requirements.txt file prior to deployment*
+
+    1: From the dashboard, select New and then Create new app.
+    
+    2: Enter an individual app name into the text box, select a region from the dropdown and then press Create app.
+    
+    3: A Heroku app has now been created and the Deploy tab is opened.
+    
+    4: Select the Settings tab.
+    
+    5: If required, click on the Reveal Config Vars button and add.
+    
+    6: In the Buildpacks section of the settings tab, click on Add Buildpack, select Python and then save changes.
+    
+    7: Click on Add Buildpack again, select node.js and then save changes.
+
+    *When they are on the dashboard, ensure that python is above node.js on the list*
+    
+    8: Open the Deploy tab.
+    
+    9: In the deployment method section, select GitHub and confirm the connection.
+    
+    10: Enter the repo-name into the text box. When the correct repo appears, click Connect.
+    
+    11: If desired, in the Automatic deploys section, click Enable Automatic Deploys.
+
+    *This then updates the deployment every time GitHub code is pushed.*
+    
+    12: To complete the process click on the Deploy Brach button in the Manual deploy section. 
+        
+    *This will take a few seconds to complete while Heroku builds the app.*
+    
+    13: A message will appear informing you that the app was successfully deployed and a View button will bring you to the live site.
+
+The live link can be found here - [BATTLESHIPS]()
+
+[Return to Table of Contents](#contents)
