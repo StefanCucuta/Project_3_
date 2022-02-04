@@ -152,7 +152,7 @@ Battleship is a strategy type guessing game for two players. It is played on rul
     
     13: A message will appear informing you that the app was successfully deployed and a View button will bring you to the live site.
 
-The live link can be found here - [BATTLESHIPS]()
+The live link can be found here - [BATTLESHIPS](https://battleships-project3.herokuapp.com/)
 
 [Return to Table of Contents](#contents)
 
