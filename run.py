@@ -33,20 +33,21 @@ def welcome_message():
              \                  < < <   |    
           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~""")
 
-    print('\n THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
     print('  IT MAY TAKE SOME TIME SO MAKE YOURSELF COMFORTABLE')
-    print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE')
+    print('\n THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
     print('  EACH PLAYER HAS 15 LIVES, THEY LOSE 1 FOR EACH HIT\n')
+    print('YOUR FLEET:')
+    print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE\n')
+    print('LEGEND:\n')
     print(f"{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASN'T BEEN GUESSED")
     print(f'{SHIP} REPRESENTS A SHIP')
     print(f'{HITSHIP} REPRESENTS A HIT OR SUNK SHIP')
     print(f'{GUESSED} IS FOR A CO-ORDINATE THAT HAS BEEN GUESSED\n')
+    print("    NOW LET'S CHOESE THE NAME OF THE CAPTAIN")
 
 
 def validate_team_name(name):
-    """
-    Validate the name of the team
-    """
+    """ Validate the name of the team """
     if not re.match('^[A-Za-z0-9_]*$', name):
         print('INVALID NAME. LETTERS, NUMBERS AND UNDERSCORES ONLY')
         return False
@@ -64,7 +65,7 @@ def name_input():
 
     print('NAME CAN BE 10 CHARACTERS MAX. LETTERS, NUMBERS & UNDERSCORES ONLY')
     while True:
-        player_name = input('PLEASE ENTER A TEAM NAME:\n')
+        player_name = input('ENTER YOUR NAME CAPTAIN!:\n')
         if validate_team_name(player_name):
             break
     print(f'\nTHE NAME YOU CHOSE IS: {player_name}\n')
@@ -99,9 +100,7 @@ class GameBoard:
     # Prints the game board
 
     def print_board(self):
-        """
-         Prints the required board to the terminal.
-        """
+        """ Prints the required board to the terminal."""
         print(f'{self.name} BOARD:\n')
         print('  A B C D E F G H I J ')
         print('  -------------------')
@@ -118,7 +117,7 @@ class GameBoard:
         if orientation == 'H':
             if column + ship_length > 10:
                 if self.user == 'player':
-                    print('SHIP DOES NOT FIT, TRY AGAIN SIR!\n')
+                    print('CAPTAIN,THE SHIP DOES NOT FIT, TRY AGAIN SIR!\n')
                     return False
                 else:
                     return False
@@ -127,7 +126,7 @@ class GameBoard:
         else:
             if row + ship_length > 10:
                 if self.user == 'player':
-                    print('SHIP DOES NOT FIT, TRY AGAIN SIR!\n')
+                    print('CAPTAIN,THE SHIP DOES NOT FIT, TRY AGAIN SIR!\n')
                     return False
                 else:
                     return False
@@ -168,11 +167,11 @@ class GameBoard:
         if ship_length == 6:
             print('PLEASE PLACE THE AIRCRAFT CARRIER (1x6)\n')
         elif ship_length == 4:
-            print('PLEASE PLACE THE BATTLECRUISER (1x4)\n')
+            print('PLEASE PLACE THE CRUISER (1x4)\n')
         elif ship_length == 3:
-            print('PLEASE PLACE THE SUBMARINE (1x3)\n')
+            print('PLEASE PLACE THE DESTROYER (1x3)\n')
         elif ship_length == 2:
-            print('PLEASE PLACE THE FRIGATE (1x2)\n')
+            print('PLEASE PLACE THE ASSAULT SHIP (1x2)\n')
 
     def ship_input(self):
         """Collects the users desired"""
@@ -396,6 +395,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 if computer_lives == 0:
                     print('\nTHE COMPUTER HAS NO LIVES LEFT!')
                     print('YOU WIN!')
+                    print('🄴🄽🄴🄼🅈 🄳🄸🅂🅃🅁🄾🄴🄳')
                     print(' ')
                     print(PHASE)
                     break
@@ -429,6 +429,7 @@ def run_game(player_board, user_guess, computer_board, computer_guess):
                 if player_lives == 0:
                     print('\nYOU HAVE NO LIVES LEFT!')
                     print('YOU LOSE!')
+                    print('🄶🄰🄼🄴 🄾🅅🄴🅁')
                     print(' ')
                     print(PHASE)
                     break
