@@ -24,18 +24,18 @@ PHASE = '░░░░░░░░░░░░░░░░░░░░░░░�
 
 def welcome_message():
     """ Welcome Message """
-    print('\nWELCOME TO BATTLESHIPS GAME!')
+    print('\n         WELCOME TO BATTLESHIPS GAME!\n')
     print('  IT MAY TAKE SOME TIME SO MAKE YOURSELF COMFORTABLE')
     print('\n THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
     print('  EACH PLAYER HAS 15 LIVES, THEY LOSE 1 FOR EACH HIT\n')
     print('YOUR FLEET:')
-    print('AIRCRAFT CARRIER - BATTLECRUISER - SUBMARINE - FRIGATE\n')
+    print('AIRCRAFT CARRIER - CRUISER - DESTROYER - ASSAULT SHIP\n')
     print('LEGEND:\n')
     print(f"{EMPTY} IS FOR AN EMPTY OR CO-ORDINATE THAT HASN'T BEEN GUESSED")
     print(f'{SHIP} REPRESENTS A SHIP')
     print(f'{HITSHIP} REPRESENTS A HIT OR SUNK SHIP')
     print(f'{GUESSED} IS FOR A CO-ORDINATE THAT HAS BEEN GUESSED\n')
-    print("    NOW LET'S CHOESE THE NAME OF THE CAPTAIN")
+    print("    NOW LET'S CHOOSE THE NAME OF THE CAPTAIN")
 
 
 def validate_team_name(name):
