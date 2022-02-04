@@ -24,15 +24,7 @@ PHASE = '░░░░░░░░░░░░░░░░░░░░░░░�
 
 def welcome_message():
     """ Welcome Message """
-    print('\n             WELCOME TO BATTLESHIPS GAME!')
-
-    print("""
-                           __/___            
-                     _____/______|           
-             _______/_____\_______\_____     
-             \                  < < <   |    
-          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~""")
-
+    print('\nWELCOME TO BATTLESHIPS GAME!')
     print('  IT MAY TAKE SOME TIME SO MAKE YOURSELF COMFORTABLE')
     print('\n THE BOARD IS A GRID OF 10X10 WITH FOUR SHIPS TO SINK')
     print('  EACH PLAYER HAS 15 LIVES, THEY LOSE 1 FOR EACH HIT\n')

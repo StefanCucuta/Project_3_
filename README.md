@@ -14,10 +14,7 @@ Battleship is a strategy type guessing game for two players. It is played on rul
 * [User Experience (UX)](#userexperience)
 * [Design](#design)
 * [Development](#development)
-* [Existing Features](#existingfeatures)
-* [Features Left to Implement](#toimplement)
 * [Testing](#testing)
-* [Unfixed Bugs](#bugs)
 * [Deployment](#deployment)
 * [Technologies Used](#tech)
 * [Credits](#credits)
@@ -87,5 +84,32 @@ Battleship is a strategy type guessing game for two players. It is played on rul
 
 
 ![Wire frame](/assets/images/Wireframe.png)
+
+[Return to Table of Contents](#contents)
+
+## Testing <a name ='testing'></a>  
+
+-  Due to the nature of the project testing has been conducted throughout its entirety, mainly through the use of running the program in the terminal and ensuring i get the output intended. Evidence of this is clear within my commits, with various debugs recorded. 
+
+-  Various sections of code where also developed in isolation and outputs checked before being inserted into the running order as the size of the project grew.  
+
+
+- **Validator Testing**
+
+    - HTML
+        - Not within project scope.
+
+    - CSS
+        - Not within project scope.
+
+    - JS
+        - Not within project scope.
+
+    - Python
+        - No errors were found when passing through the [PEP8 Validator tool](http://pep8online.com/)
+
+- **Lighthouse**
+
+    - Not within project scope.
 
 [Return to Table of Contents](#contents)
